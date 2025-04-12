@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Reminder</string>
+    <string name="app_title">Reminder</string>
+    <string name="permission_warning">You will not receive reminders without permission to send notifications</string>
+    <string name="form_title">Create a reminder</string>
+    <string name="form_text_hint">Enter reminder</string>
+    <string name="form_date_hint">Select date</string>
+    <string name="form_time_hint">Select time</string>
+    <string name="form_create">Create</string>
+    <string name="toast_datetime_error">Select date or time!</string>
+    <string name="toast_text_error">Enter reminder!</string>
+    <string name="toast_reminder_created">Reminder created!</string>
+    <string name="toast_reminder_removed">Reminder removed!</string>
+    <string name="new_reminder">New reminder!</string>
+</resources>
