@@ -26,7 +26,7 @@ class ReminderBroadcastReceiver : BroadcastReceiver() {
             }
             // Получаем данные из интента
             val text = intent?.getStringExtra("text") ?: "Reminder Text"
-            val id = intent?.getIntExtra("id", 0)
+            val id = intent?.getIntExtra("id", 1)
             // Подключаемся к менеджеру уведомлений, который создали в классе ReminderApplication
             val notificationManager = NotificationManagerCompat.from(context)
             val builder = NotificationCompat.Builder(context, ReminderApplication.CHANNEL_ID)
