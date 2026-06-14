@@ -1,0 +1,15 @@
+{
+  "files.associations": {
+    "*.kt": "kotlin",
+    "*.kts": "kotlin"
+  },
+  "kotlin.languageServer.enabled": true,
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.import.gradle.enabled": true,
+  "java.import.gradle.wrapper.enabled": true,
+  "java.import.gradle.version": "wrapper",
+  "java.import.gradle.home": "",
+  "gradle.nestedProjects": true,
+  "java.jdt.ls.java.home": "/opt/homebrew/Cellar/openjdk@17/17.0.16/libexec/openjdk.jdk/Contents/Home",
+  "java.compile.nullAnalysis.mode": "disabled"
+}

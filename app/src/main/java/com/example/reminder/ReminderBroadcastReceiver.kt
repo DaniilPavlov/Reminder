@@ -9,40 +9,43 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
-
-// Класс для отправки уведомлений
-// Его нужно зарегестрировать в AndroidManifest
-// <receiver android:name=".ReminderBroadcastReceiver"/>
+/**
+ * BroadcastReceiver — компонент, который «просыпается» по системному событию.
+ *
+ * Здесь: AlarmManager в нужное время шлёт Intent сюда, и мы показываем уведомление.
+ * Зарегистрирован в AndroidManifest: <receiver android:name=".ReminderBroadcastReceiver"/>
+ *
+ * Цепочка: ViewModel → AlarmScheduler → PendingIntent → onReceive() → Notification.
+ */
 class ReminderBroadcastReceiver : BroadcastReceiver() {
+
+    /**
+     * Вызывается системой, когда срабатывает будильник.
+     * @param context контекст приложения
+     * @param intent содержит extras "text" и "id" напоминания
+     */
     override fun onReceive(context: Context?, intent: Intent?) {
         if (context != null) {
-            // Проверяем, можно ли отправлять уведомление
+            // Без разрешения на Android 13+ notify() упадёт или не покажет push
             if (ActivityCompat.checkSelfPermission(
-                    context, android.Manifest.permission.POST_NOTIFICATIONS
+                    context, android.Manifest.permission.POST_NOTIFICATIONS,
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                // Если нельзя - не отправляем уведомление и заканчиваем выполнение метода
                 return
             }
-            // Получаем данные из интента
+
             val text = intent?.getStringExtra("text") ?: "Reminder Text"
             val id = intent?.getIntExtra("id", 1)
-            // Подключаемся к менеджеру уведомлений, который создали в классе ReminderApplication
+
             val notificationManager = NotificationManagerCompat.from(context)
             val builder = NotificationCompat.Builder(context, ReminderApplication.CHANNEL_ID)
-                // Устанавливаем иконку
                 .setSmallIcon(R.drawable.ic_notification)
-                // Устанавливаем заголовок
                 .setContentTitle(context.resources.getString(R.string.new_reminder))
-                // Устанавливаем текст из интента
                 .setContentText(text)
-                // Устанавливаем высокий приоритет
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                // Устанавливаем публичную видимость, чтобы уведомление было видно на экране блокировки
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                // Устанавливаем звук
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-            // Отправляем уведомление. Требуется его id (который точно будет, поэтому *!!*) и экземпляр notification (builder.build())
+
             notificationManager.notify(id!!, builder.build())
         }
     }

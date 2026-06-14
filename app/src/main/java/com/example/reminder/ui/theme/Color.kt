@@ -2,6 +2,10 @@ package com.example.reminder.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+/**
+ * Цвета Material Theme (шаблон Android Studio).
+ * В MainActivity используются в основном colors.xml; здесь — для ReminderTheme.
+ */
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
 val Pink80 = Color(0xFFEFB8C8)

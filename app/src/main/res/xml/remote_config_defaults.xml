@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>home_banner</key>
+        <value>{"type":"banner","title":"Shopping reminders","subtitle":"Sync wishlist items from the catalog","backgroundColor":"#1B2845","textColor":"#FFFFFF","actionLabel":"Browse catalog"}</value>
+    </entry>
+</defaultsMap>
